@@ -2,7 +2,8 @@
 # Email last 10 mins of current logfile when a winlink user connects.
 # Add the following to autoexec.nos 
 # log trigger add "from_ax25&loop&terminated&" "sh ./last10mins.sh"
-# save file to your JNOS directory
+# save file to your JNOS directory.
+# Uses POSTFIX to send mail. 
 # K1YMI 09Mar2025
 #
 # Get the current date in the format DDMonYY
