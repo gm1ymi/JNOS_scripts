@@ -21,11 +21,6 @@ if [[ ! -f "$logfile" ]]; then
     exit 1
 fi
 
-# Remove output file if it already exists
-if [[ -f "$output_file" ]]; then
-    rm "$output_file"
-fi
-
 # Get the current time and 10 minutes ago time
 start_time=$(date --date='10 minutes ago' '+%H:%M')
 end_time=$(date '+%H:%M')
