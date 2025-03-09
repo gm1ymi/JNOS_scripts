@@ -21,16 +21,21 @@ if [[ ! -f "$logfile" ]]; then
     exit 1
 fi
 
+# Remove output file if it already exists
+if [[ -f "$output_file" ]]; then
+    rm "$output_file"
+fi
+
 # Get the current time and 10 minutes ago time
 start_time=$(date --date='10 minutes ago' '+%H:%M')
 end_time=$(date '+%H:%M')
 
-# Extract logs between the last 10 minutes and now
+# Extract logs between the last 10 minutes and now, overwriting existing file
 awk -v start="$start_time" -v end="$end_time" '$0 ~ start, $0 ~ end' "$logfile" > "$output_file"
 
 echo "Last 10 minutes of logs saved to $output_file"
 
 # Email the log file contents using Postfix
 subject="Winlink Log Extract $end_time"
-recipient="<enter valid email address>"
+recipient="<enter valid email!"
 echo -e "Subject: $subject\n\n$(cat $output_file)" | mail -s "$subject" "$recipient"
