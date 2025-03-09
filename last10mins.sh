@@ -1,5 +1,5 @@
 #!/bin/bash
-# Email last 10 mins of current logfile when a winlink user connects.
+# Email last 10 mins of current logfile when a winlink user disconnects.
 # Add the following two lines to autoexec.nos 
 # log trigger add "from_ax25 loop terminated&" "sh ./last10mins.sh"
 # log trigger timer 300
